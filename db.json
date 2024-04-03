@@ -1,0 +1,147 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "nom": "Dupont",
+      "prenom": "Jean",
+      "age": "30"
+    },
+    {
+      "id": "2",
+      "nom": "Durand",
+      "prenom": "Marie",
+      "age": "25"
+    },
+    {
+      "id": "3",
+      "nom": "Martin",
+      "prenom": "Paul",
+      "age": "40"
+    },
+    {
+      "id": "4",
+      "nom": "Lefebvre",
+      "prenom": "Sophie",
+      "age": "35"
+    },
+    {
+      "id": "5",
+      "nom": "Dubois",
+      "prenom": "Julie",
+      "age": "28"
+    },
+    {
+      "id": "8167",
+      "nom": "test",
+      "prenom": "test",
+      "age": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "libelle": "Electronique"
+    },
+    {
+      "id": "2",
+      "libelle": "Vetements"
+    },
+    {
+      "id": "3",
+      "libelle": "Alimentation"
+    },
+    {
+      "id": "4",
+      "libelle": "Maison"
+    },
+    {
+      "id": "5",
+      "libelle": "Sport"
+    }
+  ],
+  "marques": [
+    {
+      "id": "1",
+      "libelle": "Samsung"
+    },
+    {
+      "id": "2",
+      "libelle": "Nike"
+    },
+    {
+      "id": "3",
+      "libelle": "Sony"
+    },
+    {
+      "id": "4",
+      "libelle": "Adidas"
+    },
+    {
+      "id": "5",
+      "libelle": "Apple"
+    },
+    {
+      "id": "c5fa",
+      "libelle": "Autres"
+    },
+    {
+      "id": "bd70",
+      "libelle": "gdfsd"
+    },
+    {
+      "id": "9982",
+      "libelle": "dfs"
+    }
+  ],
+  "produits": [
+    {
+      "id": "1",
+      "libelle": "Telephone",
+      "quantite": "100",
+      "categorie": "1",
+      "marque": "1"
+    },
+    {
+      "id": "2",
+      "libelle": "Chaussures de sport",
+      "quantite": "50",
+      "categorie": "2",
+      "marque": "4"
+    },
+    {
+      "id": "3",
+      "libelle": "Televiseur",
+      "quantite": "80",
+      "categorie": "1",
+      "marque": "3"
+    },
+    {
+      "id": "5",
+      "libelle": "Ordinateur portable",
+      "quantite": "70",
+      "categorie": "1",
+      "marque": "5"
+    },
+    {
+      "id": "1350",
+      "libelle": "test",
+      "quantite": 12,
+      "categorie": "3",
+      "marque": "2"
+    },
+    {
+      "id": "6e24",
+      "libelle": "pc",
+      "quantite": 45,
+      "categorie": "1",
+      "marque": "3"
+    },
+    {
+      "id": "d0bd",
+      "libelle": "ballon",
+      "quantite": 9,
+      "categorie": "5",
+      "marque": "3"
+    }
+  ]
+}

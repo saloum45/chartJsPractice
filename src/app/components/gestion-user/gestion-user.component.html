@@ -1,0 +1,136 @@
+<div class="pagetitle">
+  <h1>La liste des utilisateur</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/admin/overview']" routerLinkActive="activeMenu">Tableau de
+          bord</a></li>
+      <li class="breadcrumb-item">Gestion des utilisateur</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+  <div class="row">
+    <div class="col-lg-6 me-5">
+      <div class="card">
+        <div class="card-body">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Nom</th>
+                <th scope="col" class="text-center">Prenom</th>
+                <th scope="col" class="text-center">Age</th>
+                <th scope="col" class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of allUsers">
+                <td class="text-center" scope="row"><a>{{ item.id }}</a></td>
+                <td class="text-center">{{ item.nom }}</td>
+                <td class="text-center">{{ item.prenom }}</td>
+                <td class="text-center">{{ item.age }}</td>
+                <td class="text-center">
+                  <button class="btn  btn-sm btn-warning me-2" data-bs-toggle="modal" data-bs-target="#updateClasse"
+                    (click)="onGetUserToUpdate(item.id)">Modifier</button>
+                  <button class="btn  btn-sm btn-danger me-2" (click)="onDeleteUser(item.id)">Supprimer</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- formulaire d'ajout -->
+    <div class="col-lg-5 ms-5">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="text-center my-3 fw-bold">Ajouter une utilisateur</h5>
+          <form class="row g-3 p3" [formGroup]="addForm">
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="nomUserAdd" placeholder="Your Name" name="nomUserAdd"
+                  formControlName="nom">
+                <label for="nomUserAdd">Nom de la utilisateur</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="prenomUserAdd" placeholder="Your Name"
+                  name="prenomUserAdd" formControlName="prenom">
+                <label for="prenomUserAdd">Prenom de la utilisateur</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="number" class="form-control" id="ageUserAdd" placeholder="Your Name"
+                  name="ageUserAdd" formControlName="age">
+                <label for="ageUserAdd">Age de la utilisateur</label>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="reset" class="btn btn-secondary me-3" (click)="clearInput(addForm)">Annuler</button>
+              <button type="submit" class="btn btn-primary" (click)="onAddUser()">Ajouter</button>
+            </div>
+          </form><!-- End floating Labels Form -->
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- modal modifier class -->
+  <div class="modal fade" id="updateClasse" tabindex="-1" aria-labelledby="updateClasseLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-4 fw-semibold text-center w-100" id="detailEvenementLabel">
+            Modifier une utilisateur
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form class="row g-3 p3" *ngIf="user" [formGroup]="updateForm">
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="nomUserUpdate" placeholder="Your Name" name="nomUserUpdate"
+                  formControlName="nom">
+                <label for="nomUserUpdate">Nom de la classe</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="prenomUserUpdate" placeholder="Your Name"
+                  name="prenomUserUpdate" formControlName="prenom">
+                <label for="prenomUserUpdate">Prenom</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="number" class="form-control" id="ageUserAdd" placeholder="Your Name"
+                  name="ageUserAdd" formControlName="age">
+                <label for="ageUserAdd">Age de la utilisateur</label>
+              </div>
+            </div>
+          </form>
+
+          <!-- End floating Labels Form -->
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-secondary w-25 me-3" data-bs-dismiss="modal" #closeAddExpenseModal>
+            Annuler
+          </button>
+          <button type="button" class="btn btn-warning w-25" (click)="onUpdateUser(user.id)">
+            Modifier
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

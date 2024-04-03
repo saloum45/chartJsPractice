@@ -1,0 +1,104 @@
+<div class="pagetitle">
+  <h1>La liste des catégories</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/admin/overview']" routerLinkActive="activeMenu">Tableau de
+          bord</a></li>
+      <li class="breadcrumb-item">Gestion des catégories</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+  <div class="row">
+    <div class="col-lg-6 me-5">
+      <div class="card">
+        <div class="card-body">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Nom</th>
+                <th scope="col" class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of allCategories">
+                <td class="text-center" scope="row"><a>{{ item.id }}</a></td>
+                <td class="text-center">{{ item.libelle }}</td>
+                <td class="text-center">
+                  <button class="btn  btn-sm btn-warning me-2" data-bs-toggle="modal" data-bs-target="#updateClasse"
+                    (click)="onGetItemToUpdate(item.id)">Modifier</button>
+                  <button class="btn  btn-sm btn-danger me-2" (click)="onDelete(item.id)">Supprimer</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- formulaire d'ajout -->
+    <div class="col-lg-5 ms-5">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="text-center my-3 fw-bold">Ajouter une catégorie</h5>
+          <form class="row g-3 p3" [formGroup]="addForm">
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="nomCategorieAdd" placeholder="Your Name" name="nomCategorieAdd"
+                  formControlName="libelle">
+                <label for="nomCategorieAdd">Nom du catégorie</label>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="reset" class="btn btn-secondary me-3" (click)="clearInput(addForm)">Annuler</button>
+              <button type="submit" class="btn btn-primary" (click)="onAdd()">Ajouter</button>
+            </div>
+          </form><!-- End floating Labels Form -->
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- modal modifier class -->
+  <div class="modal fade" id="updateClasse" tabindex="-1" aria-labelledby="updateClasseLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-4 fw-semibold text-center w-100" id="detailEvenementLabel">
+            Modifier une utilisateur
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form class="row g-3 p3" *ngIf="categorie" [formGroup]="updateForm">
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="nomCategorieUpdate" placeholder="Your Name" name="nomCategorieUpdate"
+                  formControlName="libelle">
+                <label for="nomCategorieUpdate">Nom du catégorie</label>
+              </div>
+            </div>
+          </form>
+
+          <!-- End floating Labels Form -->
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-secondary w-25 me-3" data-bs-dismiss="modal" #closeAddExpenseModal>
+            Annuler
+          </button>
+          <button type="button" class="btn btn-warning w-25" (click)="onUpdate(categorie.id)">
+            Modifier
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

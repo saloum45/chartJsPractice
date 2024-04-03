@@ -1,0 +1,174 @@
+<div class="pagetitle">
+  <h1>La liste des produits</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/admin/overview']" routerLinkActive="activeMenu">Tableau de
+          bord</a></li>
+      <li class="breadcrumb-item">Gestion des produits</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+  <!-- Button ajouter classe modal -->
+  <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ajoutProfesseur">
+    Ajouter produit
+  </button>
+  <div class="row">
+    <div class="col-lg-12 me-5">
+      <div class="card">
+        <div class="card-body">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Nom</th>
+                <th scope="col" class="text-center">Quantite</th>
+                <th scope="col" class="text-center">Categorie</th>
+                <th scope="col" class="text-center">Marque</th>
+                <th scope="col" class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of allProduit">
+                <td class="text-center" scope="row"><a>{{ item.id }}</a></td>
+                <td class="text-center">{{ item.libelle }}</td>
+                <td class="text-center">{{ item.quantite }}</td>
+                <td class="text-center">{{ item.categorie }}</td>
+                <td class="text-center">{{ item.marque }}</td>
+                <td class="text-center">
+                  <button class="btn  btn-sm btn-warning me-2" data-bs-toggle="modal" data-bs-target="#updateClasse"
+                    (click)="onGetItemToUpdate(item.id)">Modifier</button>
+                  <button class="btn  btn-sm btn-danger me-2" (click)="onDelete(item.id)">Supprimer</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal ajouter-->
+<div class="modal fade" id="ajoutProfesseur" tabindex="-1" aria-labelledby="ajoutProfesseurLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="ajoutProfesseurLabel">Ajouter apprenant</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form class="row g-3" [formGroup]="addForm">
+          <div class="col-md-6">
+            <div class="">
+              <label for="nomProduitAdd">Nom</label>
+              <input type="text" class="form-control" id="nomProduitAdd" name="nomProduitAdd" placeholder="Votre Prénom"
+                formControlName="libelle">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="">
+              <label for="quantiteProduitAdd">Quantite</label>
+              <input type="number" class="form-control" id="quantiteProduitAdd" name="quantiteProduitAdd" placeholder="Votre Prénom"
+                formControlName="quantite">
+            </div>
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="categorieAdd">Catégorie</label>
+            <select class="form-select form-control" id="categorieAdd" name="categorieAdd" aria-label="Floating label select example"
+              formControlName="categorie">
+              <!-- <option [ngValue]=null default>Veuillez selectioner la categorie</option> -->
+              <option *ngFor="let item of allCategories;" [ngValue]="item.id">
+                {{ item.libelle }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3 col-md-6">
+            <label for="marqueAdd">Marque</label>
+            <select class="form-select" id="marqueAdd" name="marqueAdd" aria-label=" label select example"
+              formControlName="marque">
+              <!-- <option [ngValue]=null>Veuillez selectioner la marque</option> -->
+              <option *ngFor="let item of allMarque" [ngValue]="item.id">
+                {{ item.libelle }}
+              </option>
+
+            </select>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" #closeAddExpenseModal>annuler</button>
+        <button type="button" class="btn btn-primary" (click)="onAdd()">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- modal modifier -->
+  <div class="modal fade" id="updateClasse" tabindex="-1" aria-labelledby="updateClasseLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-4 fw-semibold text-center w-100" id="detailEvenementLabel">
+            Modifier une utilisateur
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form class="row g-3" [formGroup]="updateForm">
+            <div class="col-md-6">
+              <div class="">
+                <label for="nomProduitAdd">Nom</label>
+                <input type="text" class="form-control" id="nomProduitAdd" name="nomProduitAdd" placeholder="Votre Prénom"
+                  formControlName="libelle">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="">
+                <label for="quantiteProduitAdd">Quantite</label>
+                <input type="number" class="form-control" id="quantiteProduitAdd" name="quantiteProduitAdd" placeholder="Votre Prénom"
+                  formControlName="quantite">
+              </div>
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="categorieAdd">Catégorie</label>
+              <select class="form-select form-control" id="categorieAdd" name="categorieAdd" aria-label="Floating label select example"
+                formControlName="categorie">
+                <!-- <option [ngValue]=null>Veuillez selectioner la categorie</option> -->
+                <option *ngFor="let item of allCategories;" [ngValue]="item.id">
+                  {{ item.libelle }}
+                </option>
+              </select>
+            </div>
+            <div class="mb-3 col-md-6">
+              <label for="marqueAdd">Marque</label>
+              <select class="form-select" id="marqueAdd" name="marqueAdd" aria-label=" label select example"
+                formControlName="marque">
+                <!-- <option [ngValue]=null>Veuillez selectioner la marque</option> -->
+                <option *ngFor="let item of allMarque" [ngValue]="item.id">
+                  {{ item.libelle }}
+                </option>
+
+              </select>
+            </div>
+          </form>
+
+          <!-- End floating Labels Form -->
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" class="btn btn-secondary w-25 me-3" data-bs-dismiss="modal" #closeAddExpenseModalUpdate>
+            Annuler
+          </button>
+          <button type="button" class="btn btn-warning w-25" (click)="onUpdate(produit.id)">
+            Modifier
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

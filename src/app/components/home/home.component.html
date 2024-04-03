@@ -1,0 +1,135 @@
+<div class="pagetitle">
+  <h1>Tableau de bord</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Acceuil</a></li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+  <div class="row">
+
+    <!-- Left side columns -->
+    <div class="col-lg-12">
+      <div class="row">
+
+        <!-- Sales Card -->
+        <div class="col-xxl-3 col-md-6">
+          <div class="card info-card sales-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Nombres de Produit</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="ri-shopping-cart-2-line"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ produits.length }}</h6>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- End Sales Card -->
+
+        <!-- Customers Card -->
+        <div class="col-xxl-3 col-xl-12">
+
+          <div class="card info-card customers-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Nombre de Categorie</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-people"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ categories.length }}</h6>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- End Customers Card -->
+
+        <div class="col-xxl-3 col-xl-12">
+
+          <div class="card info-card customers-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Nombre de Marque</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-people"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ marques.length }}</h6>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="col-xxl-3 col-xl-12">
+
+          <div class="card info-card customers-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Nombre d'utilisateur</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="bi bi-people"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ users.length }}</h6>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <!-- Recent Sales -->
+        <div class="col-12">
+          <div class="card w-100">
+
+            <div class="card-body w-100 ">
+              <h5 class="card-title">Statistique</h5>
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="border" style="display: block; height: 400px">
+                    <canvas id="canvas" height="320" class="w-100">{{ barChart }}</canvas>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="chart-container w-100">
+                    <canvas id="MyChart">{{ circleChart }}</canvas>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+            </div>
+
+          </div>
+        </div><!-- End Recent Sales -->
+
+
+      </div>
+    </div><!-- End Left side columns -->
+
+  </div>
+</section>
